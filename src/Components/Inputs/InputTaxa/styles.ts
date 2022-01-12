@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   border: none;
-  width: 100%;
+  width: 90%;
   height: 100%;
   font-size: 16px;
   line-height: 24px;
@@ -20,11 +20,6 @@ export const Input = styled.input`
 
   &&:focus {
     outline: none;
-  }
-  &&::-webkit-outer-spin-button,
-  &&::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
   }
 `;
 

@@ -1,3 +1,4 @@
+import InputTaxa from "../Inputs/InputTaxa";
 import InputValor from "../Inputs/InputValor";
 import * as S from "./styles";
 
@@ -6,7 +7,7 @@ export default function Conversor() {
     <S.ConversorContainer>
       <S.InputsContainer>
         <InputValor label={"Dólar"} />
-        <InputValor label={"Dólar"} />
+        <InputTaxa label="Taxa"/>
       </S.InputsContainer>
     </S.ConversorContainer>
   );
