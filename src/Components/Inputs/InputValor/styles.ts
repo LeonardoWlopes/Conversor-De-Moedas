@@ -41,6 +41,7 @@ export const InputContainer = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   filter: drop-shadow(0px 8px 4px rgba(13, 17, 27, 0.08));
   background-color: white;

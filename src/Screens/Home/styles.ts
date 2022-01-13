@@ -16,5 +16,5 @@ export const Content = styled.div`
   width: 45%;
   height: 75vh;
   //background-color: greenyellow;
-  
+  padding: 0px 46px;
 `;
