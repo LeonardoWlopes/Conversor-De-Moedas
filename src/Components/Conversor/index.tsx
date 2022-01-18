@@ -21,10 +21,6 @@ export default function Conversor({ isColumn }: props) {
   const { usdBrl } = useContext(ValoresContext);
 
   useEffect(() => {
-    setDolar(window.innerWidth);
-  }, []);
-
-  useEffect(() => {
     if (!!tipo && !!dolar && !!taxa && dolar != 0 && taxa != 0) {
       setActive(true);
     } else {

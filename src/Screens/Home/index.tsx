@@ -7,8 +7,6 @@ import Header from "../../Components/Header";
 export default function Home() {
   const [isColumn, setIsColumn] = useState(false);
 
-  useEffect(() => console.log("Mudou"), [isColumn]);
-
   window.addEventListener("resize", function () {
     window.innerWidth < 875 ? setIsColumn(true) : setIsColumn(false);
   });
