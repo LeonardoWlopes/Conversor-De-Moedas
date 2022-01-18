@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Conversor-De-Moedas/static/css/main.06a9b59e.css",
-    "main.js": "/Conversor-De-Moedas/static/js/main.fb64e935.js",
+    "main.js": "/Conversor-De-Moedas/static/js/main.57a87353.js",
     "static/media/Mask.png": "/Conversor-De-Moedas/static/media/Mask.d406d41b3bcac645620e.png",
     "index.html": "/Conversor-De-Moedas/index.html",
     "main.06a9b59e.css.map": "/Conversor-De-Moedas/static/css/main.06a9b59e.css.map",
-    "main.fb64e935.js.map": "/Conversor-De-Moedas/static/js/main.fb64e935.js.map"
+    "main.57a87353.js.map": "/Conversor-De-Moedas/static/js/main.57a87353.js.map"
   },
   "entrypoints": [
     "static/css/main.06a9b59e.css",
-    "static/js/main.fb64e935.js"
+    "static/js/main.57a87353.js"
   ]
 }
