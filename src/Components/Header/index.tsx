@@ -16,7 +16,7 @@ function Header({ isColumn }: props) {
 
   return (
     <S.Header isColumn={isColumn}>
-      <S.HeaderImage>
+      <S.HeaderImage isColumn={isColumn}>
         <img src={require("../../Assets/Main Logo.png")} alt="Logo Stone" />
       </S.HeaderImage>
       <S.HeaderContent>

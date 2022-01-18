@@ -9,15 +9,15 @@ export const Header = styled.header<props>`
   margin: 64px 0px;
   flex-direction: ${(props) => (props.isColumn ? "column" : "row")};
   display: flex;
-  //background-color: green;
   margin: ${(props) => (props.isColumn ? "auto" : "none")};
 `;
 
-export const HeaderImage = styled.div`
+export const HeaderImage = styled.div<props>`
   height: 80px;
   width: 165px;
   margin: auto;
   margin-bottom: 16px;
+  margin-right: ${(props) => (props.isColumn ? "" : "16px")};
 `;
 
 export const HeaderContent = styled.div`

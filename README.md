@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+<!-- 
+   CUIDADO 
+   Quando editar esse readme, tome cuidado com as tags <br/> 
+   elas são importantes para alinhar as imagens
+-->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+   <img src=".github/brand.svg" height="90">
+</div>
 
-## Available Scripts
+# Conversor de Moedas
 
-In the project directory, you can run:
+Um site que converte valores de dólar para real.
 
-### `npm start`
+<img align="right" src=".github/currency.svg" width="370">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A aplicação tem duas etapas, uma para inserir o valor que se deseja converter e outra para mostrar os valores convertidos.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Para isso, o site utiliza a  [API de moedas][QUOTATION_API] Para se manter sempre atualizado.
 
-### `npm test`
+A aplicação funciona da seguinte maneira:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Ela busca na API a última cotação do dólar
 
-### `npm run build`
+2. Pega as informações digitadas pelo usuário
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Calcula o imposto baseado no que o usuário digitou
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Faz a conversão com a contação mais atual
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. E mostra para o usuário o resultado final
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Cálculo dos valores
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img align="left" src=".github/calculate.svg" width="250">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Comprando com dinheiro
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`[(Valor em dólar) + (imposto do Estado)] x (valor do dólar + IOF da compra de dólar)`
 
-## Learn More
+### Comprando com cartão
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`[(Valor em dólar) + (imposto do Estado) + (IOF de transações internacionais)] x (valor do dólar)`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
+<br/>
+
+## Possíveis dúvidas
+
+- IOF é um imposto federal e tem como intuito ser um regulador da economia nacional. Em dinheiro, seu valor é 1,1%, e em cartão 6,4%
+- Nos EUA, cada Estado tem sua própria cobrança de impostos. Por exemplo, o imposto de Nevada é de 8,19%, já o de Nova Iorque é de 8,87%
+
+<br/>
+
+
+[QUOTATION_API]: https://docs.awesomeapi.com.br/api-de-moedas
+

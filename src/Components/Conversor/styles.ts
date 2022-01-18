@@ -11,7 +11,6 @@ export const ConversorContainer = styled.div<props>`
   max-width: 390px;
   min-height: 270px;
   width: 100%;
-  //background-color: green;
   margin: ${(props) => (props.isColumn ? "auto" : "")};
   align-items: ${(props) => (props.isColumn ? "center" : "")};
 `;
@@ -30,7 +29,6 @@ export const TipoDeCompra = styled.div<props>`
   flex-direction: column;
   width: 100%;
   margin-top: 16px;
-  //background-color: blue;
   align-items: ${(props) => (props.isColumn ? "center" : "")};
 `;
 

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import * as S from "./styles";
+
 import ValoresContext from "../../Context/Valores";
 import VoltarButton from "../Buttons/Voltar";
 import InputTaxa from "../Inputs/InputTaxa";
 import InputValor from "../Inputs/InputValor";
-import * as S from "./styles";
 
 interface props {
   isColumn: boolean;
@@ -33,7 +34,6 @@ export default function Conversor({ isColumn }: props) {
     const impostoDoEstado = (dolar * taxa) / 100;
 
     if (tipo === "dinheiro") {
-      //[(Valor em dólar) + (imposto do Estado)] x (valor do dólar + IOF da compra de dólar)
       let iof = (dolar * valorDolar * 1.1) / 100;
       let part1 = dolar + impostoDoEstado;
       let part2 = valorDolar + iof;
@@ -41,7 +41,6 @@ export default function Conversor({ isColumn }: props) {
 
       setValorConvertido(valorConvertido.toFixed(2).replace(".", ","));
     } else {
-      //[(Valor em dólar) + (imposto do Estado) + (IOF de transações internacionais)] x (valor do dólar)
       let iof = (dolar * valorDolar * 6.4) / 100;
       let part1 = dolar + impostoDoEstado + iof;
       let valorConvertido = part1 * valorDolar;
@@ -97,7 +96,7 @@ export default function Conversor({ isColumn }: props) {
   else {
     return (
       <S.ConversorContainer>
-        <div>
+        <div style={{ marginTop: "32px" }}>
           <VoltarButton onClick={() => handleBack()} />
         </div>
         <S.ResultContainer>
