@@ -1,21 +1,28 @@
 import styled from "styled-components";
+interface props {
+  isColumn: boolean;
+}
 
-export const Header = styled.header`
-  width: 540px;
-  height: 85px;
+export const Header = styled.header<props>`
+  max-width: 540px;
+  min-height: 85px;
   margin: 64px 0px;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.isColumn ? "column" : "row")};
   display: flex;
+  //background-color: green;
+  margin: ${(props) => (props.isColumn ? "auto" : "none")};
 `;
 
 export const HeaderImage = styled.div`
-  height: 100%;
-  width: 30%;
+  height: 80px;
+  width: 165px;
+  margin: auto;
+  margin-bottom: 16px;
 `;
 
 export const HeaderContent = styled.div`
   height: 100%;
-  width: 70%;
+  width: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -29,6 +36,7 @@ export const ClockText = styled.span`
   line-height: 21px;
   color: #45505e;
   margin-bottom: 8px;
+  text-align: center;
 `;
 
 export const ClockInfo = styled.span`
@@ -37,4 +45,5 @@ export const ClockInfo = styled.span`
   font-size: 14px;
   line-height: 16px;
   color: #8c9cad;
+  text-align: center;
 `;

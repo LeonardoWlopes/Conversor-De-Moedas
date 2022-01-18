@@ -1,29 +1,37 @@
 import styled from "styled-components";
 
 interface props {
-  active: boolean;
+  active?: boolean;
+  isColumn?: boolean;
 }
 
-export const ConversorContainer = styled.div`
+export const ConversorContainer = styled.div<props>`
   display: flex;
   flex-direction: column;
-  width: 360px;
-  height: 268px;
+  max-width: 390px;
+  min-height: 270px;
+  width: 100%;
   //background-color: green;
+  margin: ${(props) => (props.isColumn ? "auto" : "")};
+  align-items: ${(props) => (props.isColumn ? "center" : "")};
 `;
 
-export const InputsContainer = styled.div`
+export const InputsContainer = styled.div<props>`
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
+  justify-content: ${(props) => (props.isColumn ? "center" : "")};
+  margin: 16px 0px;
+  flex-wrap: wrap;
 `;
 
-export const TipoDeCompra = styled.div`
+export const TipoDeCompra = styled.div<props>`
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 16px;
+  //background-color: blue;
+  align-items: ${(props) => (props.isColumn ? "center" : "")};
 `;
 
 export const Text = styled.span`
@@ -49,7 +57,7 @@ export const Input = styled.input`
 
 export const Button = styled.button<props>`
   width: 149px;
-  height: 56px;
+  min-height: 56px;
   background: ${(props) => (props.active ? "#00ab63" : "#8C9CAD")};
   display: flex;
   flex-direction: row;

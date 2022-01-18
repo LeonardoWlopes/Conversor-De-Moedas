@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import * as S from "./styles";
 
-export default function Header() {
+interface props {
+  isColumn: boolean;
+}
+
+function Header({ isColumn }: props) {
   const [dateState, setDateState] = useState(new Date());
 
   useEffect(() => {
@@ -11,7 +15,7 @@ export default function Header() {
   }, []);
 
   return (
-    <S.Header>
+    <S.Header isColumn={isColumn}>
       <S.HeaderImage>
         <img src={require("../../Assets/Main Logo.png")} alt="Logo Stone" />
       </S.HeaderImage>
@@ -38,3 +42,4 @@ export default function Header() {
     </S.Header>
   );
 }
+export default memo(Header);

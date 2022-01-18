@@ -1,22 +1,27 @@
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 
 import Conversor from "../../Components/Conversor";
 import Header from "../../Components/Header";
-import { useEffect } from "react";
 
 export default function Home() {
-  window.addEventListener("resize", () => {
-    console.log(window.innerWidth);
+  const [isColumn, setIsColumn] = useState(false);
+
+  useEffect(() => console.log("Mudou"), [isColumn]);
+
+  window.addEventListener("resize", function () {
+    window.innerWidth < 875 ? setIsColumn(true) : setIsColumn(false);
   });
+
   useEffect(() => {
-    console.log(window.innerWidth);
+    window.innerWidth < 875 ? setIsColumn(true) : setIsColumn(false);
   }, []);
 
   return (
-    <S.Container>
-      <S.Content>
-        <Header />
-        <Conversor />
+    <S.Container isColumn={isColumn}>
+      <S.Content isColumn={isColumn}>
+        <Header isColumn={isColumn} />
+        <Conversor isColumn={isColumn} />
       </S.Content>
     </S.Container>
   );

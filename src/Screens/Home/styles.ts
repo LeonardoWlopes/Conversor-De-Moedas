@@ -1,21 +1,25 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface props {
+  isColumn: boolean;
+}
+
+export const Container = styled.div<props>`
   width: 100vw;
-  min-height: 100vh;
-  margin: auto;
+  height: 100vh;
+  display: flex;
   background-image: url(${require("../../Assets/Mask.png")});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right bottom;
-  background-color: grey;
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<props>`
   flex-direction: column;
   display: flex;
-  width: 45%;
-  height: 75vh;
-  //background-color: greenyellow;
-  padding: 0px 46px;
+  background-color: ${(props) =>
+    props.isColumn ? "white" : ""};
+  padding: 16px 46px;
+  border-radius: 16px;
+  margin: ${(props) => (props.isColumn ? "auto" : "")};
 `;

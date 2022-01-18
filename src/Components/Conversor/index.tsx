@@ -5,7 +5,11 @@ import InputTaxa from "../Inputs/InputTaxa";
 import InputValor from "../Inputs/InputValor";
 import * as S from "./styles";
 
-export default function Conversor() {
+interface props {
+  isColumn: boolean;
+}
+
+export default function Conversor({ isColumn }: props) {
   const [tipo, setTipo] = useState("");
   const [dolar, setDolar] = useState<number>(0);
   const [taxa, setTaxa] = useState<number>(0);
@@ -15,6 +19,10 @@ export default function Conversor() {
   const [valorConvertido, setValorConvertido] = useState<string | null>(null);
 
   const { usdBrl } = useContext(ValoresContext);
+
+  useEffect(() => {
+    setDolar(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     if (!!tipo && !!dolar && !!taxa && dolar != 0 && taxa != 0) {
@@ -53,12 +61,12 @@ export default function Conversor() {
   }
   if (!valorConvertido)
     return (
-      <S.ConversorContainer>
-        <S.InputsContainer>
+      <S.ConversorContainer isColumn={isColumn}>
+        <S.InputsContainer isColumn={isColumn}>
           <InputValor label={"Dólar"} valor={dolar} setValor={setDolar} />
           <InputTaxa label="Taxa" valor={taxa} setValor={setTaxa} />
         </S.InputsContainer>
-        <S.TipoDeCompra>
+        <S.TipoDeCompra isColumn={isColumn}>
           <S.Text>Tipo de compra</S.Text>
           <S.RadioContainer onChange={(e: any) => setTipo(e.target.value)}>
             <div>
