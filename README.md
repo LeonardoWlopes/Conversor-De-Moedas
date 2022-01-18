@@ -26,7 +26,7 @@ A aplicação funciona da seguinte maneira:
 
 3. Calcula o imposto baseado no que o usuário digitou
 
-4. Faz a conversão com a contação mais atual
+4. Faz a conversão com a cotação mais atual
 
 5. E mostra para o usuário o resultado final
 
