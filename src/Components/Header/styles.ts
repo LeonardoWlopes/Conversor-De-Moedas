@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Header = styled.header`
   width: 540px;
   height: 85px;
-
   margin: 64px 0px;
   flex-direction: row;
   display: flex;

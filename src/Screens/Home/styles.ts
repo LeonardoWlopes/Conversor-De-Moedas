@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   margin: auto;
   background-image: url(${require("../../Assets/Mask.png")});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right bottom;
+  background-color: grey;
 `;
 
 export const Content = styled.div`

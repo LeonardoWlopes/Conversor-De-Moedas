@@ -11,11 +11,10 @@ const ValoresContext = createContext({} as IValoresContext);
 export const ValoresProvider: React.FC = ({ children }) => {
   const [usdBrl, setUsdBrl] = useState<IUsdBr>({} as IUsdBr);
 
-  console.log(usdBrl);
+  !!usdBrl.ask && console.log(usdBrl);
 
   useEffect(() => {
     axios.get("https://economia.awesomeapi.com.br/last/USD-BRL").then((res) => {
-      //console.log(res.data);
       setUsdBrl(res.data.USDBRL);
     });
   }, []);

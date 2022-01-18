@@ -6,8 +6,6 @@ export default function Header() {
 
   useEffect(() => {
     setInterval(() => {
-      console.log("Horario atualizado");
-
       setDateState(new Date());
     }, 30000);
   }, []);
