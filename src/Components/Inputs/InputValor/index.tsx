@@ -16,7 +16,11 @@ export default function InputValor({ label, valor, setValor }: props) {
         <S.Input
           type={"number"}
           value={valor}
-          onChange={(e) => setValor(e.target.value)}
+          onChange={(e) => {
+            try {
+              setValor(parseFloat(e.target.value));
+            } catch {}
+          }}
           min={0}
         />
       </S.InputContainer>

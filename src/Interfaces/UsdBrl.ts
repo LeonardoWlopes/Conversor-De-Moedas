@@ -1,13 +1,12 @@
 export default interface IUsdBr {
   ask: string;
-  bid: string;
+  bid: number;
   code: string;
   codein: string;
-  create_date: string;
-  high: string;
-  low: string;
+  high: number;
+  low: number;
   name: string;
-  pctChange: string;
+  pctChange: number;
   timestamp: string;
-  varBid: string;
+  varBid: number;
 }

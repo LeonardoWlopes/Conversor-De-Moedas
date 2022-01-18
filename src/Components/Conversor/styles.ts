@@ -10,10 +10,6 @@ export const ConversorContainer = styled.div`
   width: 360px;
   height: 268px;
   //background-color: green;
-  //margin: auto;
-  /* position: absolute;
-  left: 64px;
-  top: 250px; */
 `;
 
 export const InputsContainer = styled.div`
@@ -80,4 +76,39 @@ export const ButtonText = styled.span`
   align-items: center;
   color: #ffffff;
   margin-left: 8px;
+`;
+
+export const ResultContainer = styled.div`
+  margin-top: 30px;
+  width: 100%;
+  min-height: 100px;
+`;
+
+export const ResultText = styled.span`
+  font-size: 20px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  color: #45505e;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+`;
+
+export const Result = styled.span`
+  font-size: 64px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  color: #00ab63;
+  font-weight: bold;
+`;
+
+export const ResultInfoContainer = styled.div``;
+
+export const Info = styled.span`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+  color: #6e7e90;
 `;

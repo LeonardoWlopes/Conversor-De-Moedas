@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ValoresContext from "../../Context/Valores";
+import VoltarButton from "../Buttons/Voltar";
 import InputTaxa from "../Inputs/InputTaxa";
 import InputValor from "../Inputs/InputValor";
 import * as S from "./styles";
 
 export default function Conversor() {
   const [tipo, setTipo] = useState("");
-  const [dolar, setDolar] = useState(0);
-  const [taxa, setTaxa] = useState(0);
+  const [dolar, setDolar] = useState<number>(0);
+  const [taxa, setTaxa] = useState<number>(0);
 
   const [active, setActive] = useState(false);
+
+  const [valorConvertido, setValorConvertido] = useState<string | null>(null);
+
+  const { usdBrl } = useContext(ValoresContext);
 
   useEffect(() => {
     if (!!tipo && !!dolar && !!taxa && dolar != 0 && taxa != 0) {
@@ -18,39 +24,92 @@ export default function Conversor() {
     }
   }, [tipo, dolar, taxa]);
 
-  return (
-    <S.ConversorContainer>
-      <S.InputsContainer>
-        <InputValor label={"Dólar"} valor={dolar} setValor={setDolar} />
-        <InputTaxa label="Taxa" valor={taxa} setValor={setTaxa} />
-      </S.InputsContainer>
-      <S.TipoDeCompra>
-        <S.Text>Tipo de compra</S.Text>
-        <S.RadioContainer onChange={(e: any) => setTipo(e.target.value)}>
-          <div>
-            <S.Input
-              type="radio"
-              name="TipoDeCompra"
-              id="radio-1"
-              value="dinheiro"
-            />
-            Dinheiro
-          </div>
-          <div>
-            <S.Input
-              type="radio"
-              name="TipoDeCompra"
-              id="radio-2"
-              value="cartao"
-            />
-            Cartão
-          </div>
-        </S.RadioContainer>
-      </S.TipoDeCompra>
-      <S.Button active={active}>
-        <img src={require("../../Assets/Transfer.png")} alt="Simbolo Transfer" />
-        <S.ButtonText>Converter</S.ButtonText>
-      </S.Button>
-    </S.ConversorContainer>
-  );
+  function handleCalcValue() {
+    const valorDolar = parseFloat(usdBrl.ask);
+    const impostoDoEstado = (dolar * taxa) / 100;
+
+    if (tipo === "dinheiro") {
+      //[(Valor em dólar) + (imposto do Estado)] x (valor do dólar + IOF da compra de dólar)
+      let iof = (dolar * valorDolar * 1.1) / 100;
+      let part1 = dolar + impostoDoEstado;
+      let part2 = valorDolar + iof;
+      let valorConvertido = part1 * part2;
+
+      setValorConvertido(valorConvertido.toFixed(2).replace(".", ","));
+    } else {
+      //[(Valor em dólar) + (imposto do Estado) + (IOF de transações internacionais)] x (valor do dólar)
+      let iof = (dolar * valorDolar * 6.4) / 100;
+      let part1 = dolar + impostoDoEstado + iof;
+      let valorConvertido = part1 * valorDolar;
+
+      setValorConvertido(valorConvertido.toFixed(2).replace(".", ","));
+    }
+  }
+
+  function handleBack() {
+    setDolar(0);
+    setTaxa(0);
+    setValorConvertido(null);
+  }
+  if (!valorConvertido)
+    return (
+      <S.ConversorContainer>
+        <S.InputsContainer>
+          <InputValor label={"Dólar"} valor={dolar} setValor={setDolar} />
+          <InputTaxa label="Taxa" valor={taxa} setValor={setTaxa} />
+        </S.InputsContainer>
+        <S.TipoDeCompra>
+          <S.Text>Tipo de compra</S.Text>
+          <S.RadioContainer onChange={(e: any) => setTipo(e.target.value)}>
+            <div>
+              <S.Input
+                type="radio"
+                name="TipoDeCompra"
+                id="radio-1"
+                value="dinheiro"
+              />
+              Dinheiro
+            </div>
+            <div>
+              <S.Input
+                type="radio"
+                name="TipoDeCompra"
+                id="radio-2"
+                value="cartão"
+              />
+              Cartão
+            </div>
+          </S.RadioContainer>
+        </S.TipoDeCompra>
+        <S.Button active={active} onClick={() => active && handleCalcValue()}>
+          <img
+            src={require("../../Assets/Transfer.png")}
+            alt="Simbolo Transfer"
+          />
+          <S.ButtonText>Converter</S.ButtonText>
+        </S.Button>
+      </S.ConversorContainer>
+    );
+  else {
+    return (
+      <S.ConversorContainer>
+        <div>
+          <VoltarButton onClick={() => handleBack()} />
+        </div>
+        <S.ResultContainer>
+          <S.ResultText>O resultado do cálculo é</S.ResultText>
+          <S.Result>{`R$ ${valorConvertido}`}</S.Result>
+        </S.ResultContainer>
+        <S.ResultInfoContainer>
+          <S.Info>
+            Compra no {tipo} e taxa de {taxa}%
+          </S.Info>
+          <br />
+          <S.Info>
+            Cotação do dólar: $1,00 = R$ {parseFloat(usdBrl.ask).toFixed(2)}
+          </S.Info>
+        </S.ResultInfoContainer>
+      </S.ConversorContainer>
+    );
+  }
 }
